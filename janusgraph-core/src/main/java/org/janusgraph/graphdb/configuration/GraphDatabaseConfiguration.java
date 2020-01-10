@@ -282,9 +282,8 @@ public class GraphDatabaseConfiguration {
             + " Either one of the following shorthands can be used: <br>"
             + " - `default` (a blueprints compatible schema maker with MULTI edge labels and SINGLE property keys),<br>"
             + " - `none` (automatic schema creation is disabled)<br>"
-            + " - `tp3`<br>"
+            + " - `tp3` (default cardinality for property is LIST)<br>"
             + " - `logging` (same as default, but with a log done when an automatic schema creation is done)<br>"
-            + " - `tp3-logging` <br>"
             + " - or to the full package and classname of a custom/third-party implementing the"
             + " interface `org.janusgraph.core.schema.DefaultSchemaMaker`",
             ConfigOption.Type.MASKABLE, "default", new Predicate<String>() {
@@ -305,8 +304,7 @@ public class GraphDatabaseConfiguration {
             ImmutableMap.of("none", DisableDefaultSchemaMaker.INSTANCE,
                     "default", JanusGraphDefaultSchemaMaker.INSTANCE,
                     "tp3", Tp3DefaultSchemaMaker.INSTANCE,
-                    "logging", LoggingSchemaMaker.DEFAULT_INSTANCE,
-                    "tp3-logging", LoggingSchemaMaker.TP3_INSTANCE);
+                    "logging", LoggingSchemaMaker.DEFAULT_INSTANCE);
 
     public static final ConfigOption<Boolean> SCHEMA_CONSTRAINTS = new ConfigOption<>(SCHEMA_NS, "constraints",
             "Configures the schema constraints to be used by this graph. If config 'schema.constraints' " +
